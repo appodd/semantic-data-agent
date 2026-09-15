@@ -5,6 +5,23 @@ Last updated: 2026-07-27
 This document is the project memory for future Codex sessions. Keep it concise
 but current.
 
+### Recruiting-focused README refresh (2026-09-15)
+
+Reworked the public README around the controlled Runtime chain, Context
+Onboarding, evidence-driven improvement, and bounded SQL repair. Added the
+redacted CLI repair demo and a compact runtime-flow SVG; the existing detailed
+architecture image remains available for deeper reading. The README keeps
+the project independent of any company attribution and describes only public
+or synthetic data.
+
+Verification performed in the recruiting-readme worktree: SVG XML parsing,
+README local-link existence checks, sensitive/placeholder scan, and
+`git diff --check`. The first system-Python run completed 158 tests and had 9
+import errors because that interpreter lacked `duckdb` and `sqlglot`. Re-running
+the same tree with the original project's `.venv-wren` completed 175/175 tests.
+No Runtime, Context Builder, Wren state, trace, or eval data was changed by
+this documentation refresh.
+
 ## 1. Current Status
 
 The project has a runnable Data Subagent MVP and a runnable first WrenAI Context

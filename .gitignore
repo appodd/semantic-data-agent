@@ -31,3 +31,5 @@ data/wren/**/onboarding/starrocks_connection.yml
 data/wren/**/onboarding/validation/
 data/wren/bird_*.duckdb
 data/wren/bird_*_wren_project/
+# Local implementation worktrees
+.worktrees/

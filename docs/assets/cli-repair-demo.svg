@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 820" role="img" aria-labelledby="title desc">
+  <title id="title">CLI repair demonstration</title>
+  <desc id="desc">A redacted terminal-style demonstration showing an injected bad SQL statement, a real Wren dry-run binder error, bounded DeepSeek repair, and successful execution.</desc>
+  <style>
+    .mono { font: 17px Consolas, 'Courier New', monospace; fill: #e7edf7; }
+    .muted { font: 15px Consolas, 'Courier New', monospace; fill: #9eacc2; }
+    .green { fill: #78d39a; }
+    .yellow { fill: #f2c66d; }
+    .red { fill: #ff8e8e; }
+    .blue { fill: #8eb8ff; }
+  </style>
+  <rect width="1440" height="820" rx="16" fill="#101722"/>
+  <rect width="1440" height="54" rx="16" fill="#1c2736"/>
+  <circle cx="28" cy="27" r="7" fill="#ff6d6d"/><circle cx="52" cy="27" r="7" fill="#f2c66d"/><circle cx="76" cy="27" r="7" fill="#78d39a"/>
+  <text x="112" y="34" class="muted">semantic-data-agent / controlled repair demo</text>
+  <text x="38" y="94" class="mono blue">$ ask "How many orders are there?" --inject-initial-sql "SELECT bad_column FROM orders"</text>
+  <text x="38" y="129" class="muted">debug/eval-only: first SQL is injected to deterministically trigger the repair branch</text>
+  <line x1="38" y1="151" x2="1402" y2="151" stroke="#2e3b4e"/>
+  <text x="38" y="191" class="mono">[1] semantic context loaded: models=customers, orders</text>
+  <text x="38" y="227" class="mono">[2] SQL guardrail: <tspan class="green">PASS (read-only SELECT)</tspan></text>
+  <text x="38" y="263" class="mono">[3] dry-plan: <tspan class="green">expanded to database SQL</tspan></text>
+  <text x="38" y="299" class="mono">    SELECT bad_column FROM orders</text>
+  <text x="38" y="353" class="mono">[4] dry-run: <tspan class="red">FAIL</tspan></text>
+  <text x="74" y="389" class="mono red">Binder Error: Referenced column "bad_column" not found in FROM clause</text>
+  <text x="74" y="425" class="mono red">phase=SQL_DRY_RUN</text>
+  <text x="38" y="479" class="mono">[5] repair_sql: <tspan class="yellow">bounded attempt 1 / N</tspan></text>
+  <text x="74" y="515" class="mono">SELECT COUNT(*) FROM orders</text>
+  <text x="38" y="569" class="mono">[6] guardrail: <tspan class="green">PASS</tspan>  |  dry-plan: <tspan class="green">PASS</tspan>  |  dry-run: <tspan class="green">PASS</tspan></text>
+  <text x="38" y="623" class="mono">[7] execute: <tspan class="green">SUCCESS</tspan></text>
+  <text x="74" y="659" class="mono">{ "count_star()": 99 }</text>
+  <text x="38" y="713" class="mono">[8] summarize + trace: <tspan class="green">saved</tspan></text>
+  <text x="74" y="749" class="mono">status=success  answer="There are 99 orders."  trace_id=trace_8123219a...</text>
+</svg>

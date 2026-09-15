@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 520" role="img" aria-labelledby="title desc">
+  <title id="title">Semantic Data Agent controlled runtime flow</title>
+  <desc id="desc">A controlled data agent turns a natural language question into semantic SQL, validates it, expands it through Wren dry-plan, verifies it with dry-run, repairs bounded failures, executes the query, and saves a trace.</desc>
+  <style>
+    .label { font: 600 20px Arial, sans-serif; fill: #172033; }
+    .small { font: 15px Arial, sans-serif; fill: #516078; }
+    .tiny { font: 13px Arial, sans-serif; fill: #516078; }
+    .box { stroke-width: 2; rx: 12; }
+    .arrow { stroke: #8190a8; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    .loop { stroke: #cf7a19; stroke-width: 3; fill: none; stroke-dasharray: 9 7; marker-end: url(#arrow-orange); }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8190a8"/></marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#cf7a19"/></marker>
+  </defs>
+  <rect width="1440" height="520" fill="#ffffff"/>
+  <text x="54" y="52" class="label" font-size="28">Controlled Data Agent Runtime</text>
+  <text x="54" y="80" class="small">Semantic SQL stays inside a guarded, observable execution loop.</text>
+
+  <rect x="54" y="145" width="145" height="86" class="box" fill="#eef2f8" stroke="#8290a6"/>
+  <text x="126" y="180" text-anchor="middle" class="label">Question</text>
+  <text x="126" y="207" text-anchor="middle" class="small">自然语言问题</text>
+
+  <rect x="235" y="145" width="155" height="86" class="box" fill="#e7f0ff" stroke="#2d67d8"/>
+  <text x="312" y="180" text-anchor="middle" class="label">Context</text>
+  <text x="312" y="207" text-anchor="middle" class="small">Semantic Context</text>
+
+  <rect x="426" y="145" width="165" height="86" class="box" fill="#eee9ff" stroke="#7448c7"/>
+  <text x="508" y="180" text-anchor="middle" class="label">Generate</text>
+  <text x="508" y="207" text-anchor="middle" class="small">语义 SQL</text>
+
+  <rect x="627" y="145" width="145" height="86" class="box" fill="#e7f0ff" stroke="#2d67d8"/>
+  <text x="699" y="180" text-anchor="middle" class="label">Guardrail</text>
+  <text x="699" y="207" text-anchor="middle" class="small">只读校验</text>
+
+  <rect x="808" y="145" width="180" height="86" class="box" fill="#e9f7ef" stroke="#2c8a57"/>
+  <text x="898" y="177" text-anchor="middle" class="label">dry-plan</text>
+  <text x="898" y="202" text-anchor="middle" class="tiny">expand / translate</text>
+  <text x="898" y="220" text-anchor="middle" class="tiny">to database SQL</text>
+
+  <rect x="1024" y="145" width="145" height="86" class="box" fill="#e9f7ef" stroke="#2c8a57"/>
+  <text x="1096" y="180" text-anchor="middle" class="label">dry-run</text>
+  <text x="1096" y="207" text-anchor="middle" class="small">真实执行验证</text>
+
+  <rect x="1205" y="145" width="180" height="86" class="box" fill="#eef2f8" stroke="#8290a6"/>
+  <text x="1295" y="180" text-anchor="middle" class="label">Execute</text>
+  <text x="1295" y="207" text-anchor="middle" class="small">查询与总结</text>
+
+  <path d="M199 188 H235 M390 188 H426 M591 188 H627 M772 188 H808 M988 188 H1024 M1169 188 H1205" class="arrow"/>
+
+  <rect x="530" y="342" width="382" height="86" class="box" fill="#fff3e4" stroke="#cf7a19"/>
+  <text x="721" y="378" text-anchor="middle" class="label">Bounded Repair</text>
+  <text x="721" y="405" text-anchor="middle" class="small">真实错误反馈驱动，最多 N 轮</text>
+  <path d="M1096 231 V300 H721 V342" class="loop"/>
+  <path d="M530 385 H475 V268 H699 V231" class="loop"/>
+  <text x="1110" y="292" class="tiny">dry-plan / dry-run failure</text>
+  <text x="475" y="282" class="tiny">re-check Guardrail</text>
+
+  <rect x="1000" y="342" width="385" height="86" class="box" fill="#fff3e4" stroke="#cf7a19"/>
+  <text x="1192" y="378" text-anchor="middle" class="label">Trace / Eval</text>
+  <text x="1192" y="405" text-anchor="middle" class="small">SQL attempts · timings · evidence</text>
+  <path d="M1295 231 V342" class="arrow"/>
+
+  <text x="54" y="485" class="tiny">WrenAI supplies semantic context and execution controls; the agent owns orchestration and stopping conditions.</text>
+</svg>
